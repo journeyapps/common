@@ -1,4 +1,4 @@
-# @journeyapps-labs/common-tree
+# @journeyapps/common-tree
 
 ## 3.0.0
 

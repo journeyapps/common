@@ -1,10 +1,10 @@
 {
-  "name": "@journeyapps-labs/common-docs",
+  "name": "@journeyapps/common-docs",
   "type": "module",
   "version": "0.0.5",
   "repository": {
     "type": "git",
-    "url": "https://github.com/journeyapps-labs/common.git"
+    "url": "https://github.com/journeyapps/common.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

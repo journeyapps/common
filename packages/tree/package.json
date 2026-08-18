@@ -1,5 +1,5 @@
 {
-  "name": "@journeyapps-labs/common-tree",
+  "name": "@journeyapps/common-tree",
   "version": "3.0.0",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/journeyapps-labs/common.git"
+    "url": "https://github.com/journeyapps/common.git"
   },
   "author": "JOURNEYAPPS",
   "license": "Apache-2.0",
@@ -17,7 +17,7 @@
     "test": "vitest --config vitest.config.ts --run"
   },
   "dependencies": {
-    "@journeyapps-labs/common-utils": "workspace:^"
+    "@journeyapps/common-utils": "workspace:^"
   },
   "devDependencies": {
     "vitest": "^4.1.10"

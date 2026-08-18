@@ -15,7 +15,7 @@ export interface LogStyle {
   dim?: boolean;
 }
 
-const LOG_TOKEN = Symbol.for('@journeyapps-labs/common-logger/log-token');
+const LOG_TOKEN = Symbol.for('@journeyapps/common-logger/log-token');
 
 export class LogToken {
   readonly [LOG_TOKEN] = true;

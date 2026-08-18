@@ -4,6 +4,7 @@
 '@journeyapps/common-logger': patch
 '@journeyapps/common-sdk': patch
 '@journeyapps/common-tree': patch
+'@journeyapps/common-utils': patch
 ---
 
-Update the workspace toolchain and package dependencies, including TypeScript 7 compatibility.
+Publish Common packages under the `@journeyapps` scope after moving the repository to the JourneyApps GitHub organization.

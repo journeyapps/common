@@ -1,5 +1,5 @@
 {
-  "name": "@journeyapps-labs/common-sdk",
+  "name": "@journeyapps/common-sdk",
   "version": "1.0.6",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/journeyapps-labs/common.git"
+    "url": "https://github.com/journeyapps/common.git"
   },
   "author": "JOURNEYAPPS",
   "license": "Apache-2.0",
