@@ -1,4 +1,4 @@
-import * as micro_streaming from '@journeyapps-labs/micro-streaming';
+import * as micro_streaming from '@journeyapps/micro-streaming';
 import type * as stream from 'stream/web';
 import * as defs from './definitions';
 

@@ -57,12 +57,12 @@ importers:
 
   packages/sdk:
     dependencies:
-      '@journeyapps-labs/micro-errors':
-        specifier: ^1.0.1
-        version: 1.0.1
-      '@journeyapps-labs/micro-streaming':
-        specifier: ^1.0.2
-        version: 1.0.2(@types/json-schema@7.0.15)
+      '@journeyapps/micro-errors':
+        specifier: ^2.0.0
+        version: 2.0.0
+      '@journeyapps/micro-streaming':
+        specifier: ^2.0.0
+        version: 2.0.0(@types/json-schema@7.0.15)
       '@types/node':
         specifier: ^26.1.2
         version: 26.1.2
@@ -1471,17 +1471,17 @@ packages:
     resolution: {integrity: sha512-u3UPsIilWKOM3F9CXtrG8LEJmNxwoCQC/XVj4IKYXvvpx7QIi/Kg1LI5uDmDpKlac62NUtX7eLjRh+jVZcLOzw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  '@journeyapps-labs/micro-codecs@1.0.2':
-    resolution: {integrity: sha512-RytuC7bFhSChlDYIxPQPEog9o6Qvb7+oMsjN72LI5A0w82HBshCy8/v+OHMEL8UiI8nsHk4KQQP9LBXbuDuBOg==}
+  '@journeyapps/micro-codecs@2.0.0':
+    resolution: {integrity: sha512-fdlspSfz71g6N/97Ox5o2vTlME/jgtVwsas9XiHWq4ur6qdb47i2XUddl4F8d6/NvCnlqWyY69amTiaz22bPPw==}
 
-  '@journeyapps-labs/micro-errors@1.0.1':
-    resolution: {integrity: sha512-L7a6AC0mX+AWw1q7RfFYNRrfxWrMlXMnNnFPysHBuZFrtLh4bT/4cnGwXANlm5OBNQC2urhTmtpdOXZVlxC7yw==}
+  '@journeyapps/micro-errors@2.0.0':
+    resolution: {integrity: sha512-wUO+xbGaCSXqsHsgI4XqnRV4L3danFV0YC08xvGYi6lhRo2QqUE45xSwu5ouVpPbTFGDluOI7f6b7Dl9VWkeQQ==}
 
-  '@journeyapps-labs/micro-schema@1.0.2':
-    resolution: {integrity: sha512-SkaP7zLP2cuswXUdkOVkoxoe1fP9ANITor9pLWKCzvoTN4V9xsGYw5SctMG2re88Qk1poUCfhyuMlRxKmeTaFQ==}
+  '@journeyapps/micro-schema@2.0.0':
+    resolution: {integrity: sha512-jxbWhBbxxd47Pw6RJ1Vu2MzfK4Nqy+2sHHDWbEdK1yQzhlP5dxBUooxc/SQGy/ie6hqBS8AKBSJWFpOzcsCBbA==}
 
-  '@journeyapps-labs/micro-streaming@1.0.2':
-    resolution: {integrity: sha512-CdgWC817TmbTof7IL6Oy0hCF1KCa6RXogh2uEbOYRNz+XwC1q3KQeChp38qQXvaZZtqdIsiMlZGiGGa638eTFw==}
+  '@journeyapps/micro-streaming@2.0.0':
+    resolution: {integrity: sha512-t4oOl5liVtQUq2szJhWkxT++JWvh7sRjT5gv43Af266a0eIoX2IxUAvvZz93ubnFfIkq836AggFKvP1fnZAeHA==}
 
   '@jridgewell/gen-mapping@0.3.12':
     resolution: {integrity: sha512-OuLGC46TjB5BbN1dH8JULVVZY4WTdkF7tV9Ys6wLL1rubZnCMstOhNHueU5bLCrnRuDhKPDM4g6sw4Bel5Gzqg==}
@@ -1936,14 +1936,8 @@ packages:
   '@types/node@17.0.45':
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
 
-  '@types/node@24.7.0':
-    resolution: {integrity: sha512-IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw==}
-
   '@types/node@25.2.3':
     resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
-
-  '@types/node@26.1.1':
-    resolution: {integrity: sha512-nxAkRSVkN1Y0JC1W8ky/fTfkGsMmcrRsbx+3XoZE+rMOX71kLYTV7fLXpqud1GpbpP5TuffXFqfX7fH2GgZREw==}
 
   '@types/node@26.1.2':
     resolution: {integrity: sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg==}
@@ -5521,9 +5515,6 @@ packages:
   uc.micro@2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
 
-  undici-types@7.14.0:
-    resolution: {integrity: sha512-QQiYxHuyZ9gQUIrmPo3IA+hUl4KYk8uSA7cHrcKd/l3p1OTpZcM0Tbp9x7FAtXdAYhlasd60ncPpgu6ihG6TOA==}
-
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
@@ -8094,34 +8085,35 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
-  '@journeyapps-labs/micro-codecs@1.0.2':
+  '@journeyapps/micro-codecs@2.0.0':
     dependencies:
-      '@types/node': 24.7.0
+      '@types/node': 26.1.2
       bson: 6.10.4
       ts-codec: 1.3.0
 
-  '@journeyapps-labs/micro-errors@1.0.1': {}
+  '@journeyapps/micro-errors@2.0.0': {}
 
-  '@journeyapps-labs/micro-schema@1.0.2(@types/json-schema@7.0.15)':
+  '@journeyapps/micro-schema@2.0.0(@types/json-schema@7.0.15)':
     dependencies:
       '@apidevtools/json-schema-ref-parser': 14.2.1(@types/json-schema@7.0.15)
-      '@journeyapps-labs/micro-codecs': 1.0.2
-      '@journeyapps-labs/micro-errors': 1.0.1
+      '@journeyapps/micro-codecs': 2.0.0
+      '@journeyapps/micro-errors': 2.0.0
       ajv: 8.17.1
       better-ajv-errors: 2.0.2(ajv@8.17.1)
+      bson: 6.10.4
       ts-codec: 1.3.0
       zod: 4.1.12
     transitivePeerDependencies:
       - '@types/json-schema'
 
-  '@journeyapps-labs/micro-streaming@1.0.2(@types/json-schema@7.0.15)':
+  '@journeyapps/micro-streaming@2.0.0(@types/json-schema@7.0.15)':
     dependencies:
-      '@journeyapps-labs/micro-errors': 1.0.1
-      '@journeyapps-labs/micro-schema': 1.0.2(@types/json-schema@7.0.15)
+      '@journeyapps/micro-errors': 2.0.0
+      '@journeyapps/micro-schema': 2.0.0(@types/json-schema@7.0.15)
       '@types/express': 5.0.3
       bson: 6.10.4
     transitivePeerDependencies:
@@ -8493,11 +8485,11 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 26.1.1
+      '@types/node': 26.1.2
 
   '@types/bonjour@3.5.13':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/chai@5.2.2':
     dependencies:
@@ -8506,11 +8498,11 @@ snapshots:
   '@types/connect-history-api-fallback@1.5.4':
     dependencies:
       '@types/express-serve-static-core': 5.0.7
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 26.1.1
+      '@types/node': 26.1.2
 
   '@types/debug@4.1.12':
     dependencies:
@@ -8536,14 +8528,14 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
 
   '@types/express-serve-static-core@5.0.7':
     dependencies:
-      '@types/node': 26.1.1
+      '@types/node': 26.1.2
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
@@ -8575,7 +8567,7 @@ snapshots:
 
   '@types/http-proxy@1.17.16':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/istanbul-lib-coverage@2.0.6': {}
 
@@ -8603,23 +8595,15 @@ snapshots:
 
   '@types/node-forge@1.3.13':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/node@12.20.55': {}
 
   '@types/node@17.0.45': {}
 
-  '@types/node@24.7.0':
-    dependencies:
-      undici-types: 7.14.0
-
   '@types/node@25.2.3':
     dependencies:
       undici-types: 7.16.0
-
-  '@types/node@26.1.1':
-    dependencies:
-      undici-types: 8.3.0
 
   '@types/node@26.1.2':
     dependencies:
@@ -8661,7 +8645,7 @@ snapshots:
   '@types/send@0.17.5':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 26.1.1
+      '@types/node': 26.1.2
 
   '@types/serve-index@1.9.4':
     dependencies:
@@ -8670,12 +8654,12 @@ snapshots:
   '@types/serve-static@1.15.8':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 26.1.1
+      '@types/node': 26.1.2
       '@types/send': 0.17.5
 
   '@types/sockjs@0.3.36':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/unist@2.0.11': {}
 
@@ -8683,7 +8667,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -10474,7 +10458,7 @@ snapshots:
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -10482,13 +10466,13 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 25.2.3
+      '@types/node': 26.1.2
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -12703,8 +12687,6 @@ snapshots:
       '@typescript/typescript-win32-x64': 7.0.2
 
   uc.micro@2.1.0: {}
-
-  undici-types@7.14.0: {}
 
   undici-types@7.16.0: {}
 
