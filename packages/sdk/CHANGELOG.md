@@ -1,4 +1,4 @@
-# @journeyapps-labs/common-sdk
+# @journeyapps/common-sdk
 
 ## 1.0.7
 

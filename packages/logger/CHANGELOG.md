@@ -1,4 +1,4 @@
-# @journeyapps-labs/common-logger
+# @journeyapps/common-logger
 
 ## 1.1.1
 

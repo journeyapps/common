@@ -1,4 +1,4 @@
-# @journeyapps-labs/common-ioc
+# @journeyapps/common-ioc
 
 ## 1.0.2
 

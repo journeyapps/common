@@ -1,4 +1,4 @@
-# @journeyapps-labs/common-utils
+# @journeyapps/common-utils
 
 ## 1.0.2
 
