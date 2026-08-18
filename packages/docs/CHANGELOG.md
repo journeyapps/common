@@ -1,5 +1,11 @@
 # @journeyapps/common-docs
 
+## 0.0.6
+
+### Patch Changes
+
+- 72b3575: Update the workspace toolchain and package dependencies, including TypeScript 7 compatibility.
+
 ## 0.0.5
 
 ### Patch Changes

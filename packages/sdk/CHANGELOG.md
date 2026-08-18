@@ -1,5 +1,11 @@
 # @journeyapps/common-sdk
 
+## 1.0.7
+
+### Patch Changes
+
+- 72b3575: Update the workspace toolchain and package dependencies, including TypeScript 7 compatibility.
+
 ## 1.0.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @journeyapps/common-logger
 
+## 1.1.1
+
+### Patch Changes
+
+- 72b3575: Update the workspace toolchain and package dependencies, including TypeScript 7 compatibility.
+
 ## 1.1.0
 
 ### Minor Changes

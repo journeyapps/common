@@ -1,9 +1,0 @@
----
-'@journeyapps/common-docs': patch
-'@journeyapps/common-ioc': patch
-'@journeyapps/common-logger': patch
-'@journeyapps/common-sdk': patch
-'@journeyapps/common-tree': patch
----
-
-Update the workspace toolchain and package dependencies, including TypeScript 7 compatibility.
