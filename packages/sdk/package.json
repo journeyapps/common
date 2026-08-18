@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@types/node": "^26.1.2",
-    "@journeyapps-labs/micro-errors": "^1.0.1",
-    "@journeyapps-labs/micro-streaming": "^1.0.2",
+    "@journeyapps/micro-errors": "^2.0.0",
+    "@journeyapps/micro-streaming": "^2.0.0",
     "agentkeepalive": "^4.6.0",
     "bson": "^7.3.1",
     "lodash": "^4.18.1"

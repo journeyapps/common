@@ -1,4 +1,4 @@
-import * as micro_streaming from '@journeyapps-labs/micro-streaming';
+import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as defs from '../definitions';
 import { Codec } from '../definitions';
 import * as streaming from '../streaming';

@@ -1,4 +1,4 @@
-import * as micro_streaming from '@journeyapps-labs/micro-streaming';
+import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as stream from 'stream';
 import * as sdk from '../src';
 import { METHOD } from '../src';
