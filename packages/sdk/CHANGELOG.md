@@ -1,5 +1,11 @@
 # @journeyapps/common-sdk
 
+## 1.0.8
+
+### Patch Changes
+
+- ca147cd: Publish Common packages under the `@journeyapps` scope after moving the repository to the JourneyApps GitHub organization.
+
 ## 1.0.7
 
 ### Patch Changes

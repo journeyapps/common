@@ -1,5 +1,11 @@
 # @journeyapps/common-logger
 
+## 1.1.2
+
+### Patch Changes
+
+- ca147cd: Publish Common packages under the `@journeyapps` scope after moving the repository to the JourneyApps GitHub organization.
+
 ## 1.1.1
 
 ### Patch Changes
