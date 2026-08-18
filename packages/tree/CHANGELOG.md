@@ -1,5 +1,13 @@
 # @journeyapps/common-tree
 
+## 3.0.2
+
+### Patch Changes
+
+- ca147cd: Publish Common packages under the `@journeyapps` scope after moving the repository to the JourneyApps GitHub organization.
+- Updated dependencies [ca147cd]
+  - @journeyapps/common-utils@1.0.3
+
 ## 3.0.1
 
 ### Patch Changes
