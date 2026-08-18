@@ -1,5 +1,11 @@
 # @journeyapps/common-sdk
 
+## 1.0.9
+
+### Patch Changes
+
+- 635ac04: Use the public JourneyApps Micro v2 packages.
+
 ## 1.0.8
 
 ### Patch Changes
