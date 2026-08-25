@@ -15,6 +15,11 @@ export type Codec<T = any> = {
 
 export type Codecs = Record<string, Codec>;
 
+export interface Transcoding<Decoded = any, Encoded = any> {
+  encode?: (value: Decoded) => Encoded;
+  decode?: (value: Encoded) => Decoded;
+}
+
 export type RetryStrategy = (attempt: number) => number;
 
 export enum Header {
@@ -91,6 +96,7 @@ export type CommonRequestParams<R extends TResponse = TResponse> = {
 
   headers?: RequestHeaders;
   decoder?: ResponseDecoder<R>;
+  transcoding?: Transcoding;
 };
 
 export type RequestParams<R extends TResponse, T> = CommonRequestParams<R> & {

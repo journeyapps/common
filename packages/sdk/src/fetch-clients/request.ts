@@ -78,20 +78,24 @@ export const request = async <R extends defs.TResponse>(
 
       if (params.encoder) {
         body = params.encoder(params.body);
-      } else if (params.codecs?.[content_type]) {
-        const codec: Codec = params.codecs?.[content_type];
-        body = codec.encode(params.body);
-      } else if (codecs.DEFAULT_CODECS[content_type]) {
-        const codec: Codec = codecs.DEFAULT_CODECS[content_type];
-        body = codec.encode(params.body);
       } else {
-        if (!Buffer.isBuffer(params.body) && typeof params.body !== 'string') {
-          throw new Error(
-            `Unsupported body with type ${typeof params.body} and a Content-Type of ${content_type}. None of the configured codecs know how to convert the given body to a Buffer or string. Please provide a compatible codec`
-          );
-        }
+        const request_value = params.transcoding?.encode ? params.transcoding.encode(params.body) : params.body;
 
-        body = params.body;
+        if (params.codecs?.[content_type]) {
+          const codec: Codec = params.codecs?.[content_type];
+          body = codec.encode(request_value);
+        } else if (codecs.DEFAULT_CODECS[content_type]) {
+          const codec: Codec = codecs.DEFAULT_CODECS[content_type];
+          body = codec.encode(request_value);
+        } else {
+          if (!Buffer.isBuffer(request_value) && typeof request_value !== 'string') {
+            throw new Error(
+              `Unsupported body with type ${typeof request_value} and a Content-Type of ${content_type}. None of the configured codecs know how to convert the given body to a Buffer or string. Please provide a compatible codec`
+            );
+          }
+
+          body = request_value;
+        }
       }
     }
   }
@@ -164,7 +168,10 @@ export const request = async <R extends defs.TResponse>(
           })
         );
       },
-      decode: () => decoder(res, request_metadata)
+      decode: async () => {
+        const value = await decoder(res, request_metadata);
+        return params.transcoding?.decode ? params.transcoding.decode(value) : value;
+      }
     };
   } catch (err) {
     request_timeout?.clear();
