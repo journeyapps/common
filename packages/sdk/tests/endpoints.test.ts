@@ -64,6 +64,19 @@ describe('endpoints', () => {
     expect(res).toEqual('success');
   });
 
+  test('it should preserve an explicitly configured falsy payload', async () => {
+    nock('http://test/').post('/', 'false').reply(200, { data: 'success' });
+
+    const endpoint = sdk.createEndpoint<{ ignored: boolean }, string>({
+      client,
+      endpoint: 'http://test/',
+      path: '/',
+      payload: false
+    });
+
+    await expect(endpoint({ ignored: true })).resolves.toEqual('success');
+  });
+
   test('it should properly join urls', async () => {
     nock('http://test/').post('/thing/').reply(200, { data: 'success' });
 
