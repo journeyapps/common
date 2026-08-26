@@ -38,7 +38,7 @@ jobs:
       - name: Dev Publish
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
-          pnpm changeset version --no-git-tag --snapshot dev
+          pnpm changeset version --snapshot dev
           pnpm changeset publish --tag dev
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
