@@ -48,6 +48,48 @@ describe('endpoints', () => {
     await expect(endpoint({ id: 42 })).resolves.toEqual({ id: 43 });
   });
 
+  test('codec clients allow request codecs to be omitted for void input', async () => {
+    const NumericId = t.codec(
+      'NumericId',
+      (value: number) => String(value),
+      (value: string) => Number(value)
+    );
+
+    nock('http://test/')
+      .post('/')
+      .reply(200, { data: { id: '43' } });
+
+    const sdkClient = new sdk.CodecSDKClient({ client, endpoint: 'http://test/' });
+    const endpoint = sdkClient.createEndpoint({
+      path: '/',
+      codecs: {
+        response: t.object({ id: NumericId })
+      }
+    });
+
+    await expect(endpoint()).resolves.toEqual({ id: 43 });
+  });
+
+  test('codec clients allow response codecs to be omitted for void output', async () => {
+    const NumericId = t.codec(
+      'NumericId',
+      (value: number) => String(value),
+      (value: string) => Number(value)
+    );
+
+    nock('http://test/').post('/', { id: '42' }).reply(200, { data: null });
+
+    const sdkClient = new sdk.CodecSDKClient({ client, endpoint: 'http://test/' });
+    const endpoint = sdkClient.createEndpoint({
+      path: '/',
+      codecs: {
+        request: t.object({ id: NumericId })
+      }
+    });
+
+    await expect(endpoint({ id: 42 })).resolves.toBeUndefined();
+  });
+
   test('it should allow payloads for dynamic options. but not pass them into GET requests', async () => {
     nock('http://test').get('/param', '').reply(200, { data: 'success' });
 
