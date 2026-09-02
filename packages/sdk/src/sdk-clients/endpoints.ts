@@ -61,7 +61,7 @@ export const createEndpoint = <
     }
 
     let method = request_options.method || defs.METHOD.POST;
-    let body = request_options.payload || payload;
+    let body = request_options.payload ?? payload;
 
     /*
       In some cases we want the payload so we can dynamically construct a GET URL (`options` is a function),

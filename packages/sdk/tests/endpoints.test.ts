@@ -5,6 +5,7 @@ import { METHOD } from '../src';
 // @ts-ignore
 import nock from 'nock';
 import { describe, test, it, expect } from 'vitest';
+import * as t from 'ts-codec';
 
 describe('endpoints', () => {
   const client = sdk.createNodeNetworkClient();
@@ -22,6 +23,73 @@ describe('endpoints', () => {
     expect(res).toEqual('success');
   });
 
+  test('codec clients transcode values around the standard service response lifecycle', async () => {
+    const NumericId = t.codec(
+      'NumericId',
+      (value: number) => String(value),
+      (value: string) => Number(value)
+    );
+    const Request = t.object({ id: NumericId });
+    const Response = t.object({ id: NumericId });
+
+    nock('http://test/')
+      .post('/', { id: '42' })
+      .reply(200, { data: { id: '43' } });
+
+    const sdkClient = new sdk.CodecSDKClient({ client, endpoint: 'http://test/' });
+    const endpoint = sdkClient.createEndpoint({
+      path: '/',
+      codecs: {
+        request: Request,
+        response: Response
+      }
+    });
+
+    await expect(endpoint({ id: 42 })).resolves.toEqual({ id: 43 });
+  });
+
+  test('codec clients allow request codecs to be omitted for void input', async () => {
+    const NumericId = t.codec(
+      'NumericId',
+      (value: number) => String(value),
+      (value: string) => Number(value)
+    );
+
+    nock('http://test/')
+      .post('/')
+      .reply(200, { data: { id: '43' } });
+
+    const sdkClient = new sdk.CodecSDKClient({ client, endpoint: 'http://test/' });
+    const endpoint = sdkClient.createEndpoint({
+      path: '/',
+      codecs: {
+        response: t.object({ id: NumericId })
+      }
+    });
+
+    await expect(endpoint()).resolves.toEqual({ id: 43 });
+  });
+
+  test('codec clients allow response codecs to be omitted for void output', async () => {
+    const NumericId = t.codec(
+      'NumericId',
+      (value: number) => String(value),
+      (value: string) => Number(value)
+    );
+
+    nock('http://test/').post('/', { id: '42' }).reply(200, { data: null });
+
+    const sdkClient = new sdk.CodecSDKClient({ client, endpoint: 'http://test/' });
+    const endpoint = sdkClient.createEndpoint({
+      path: '/',
+      codecs: {
+        request: t.object({ id: NumericId })
+      }
+    });
+
+    await expect(endpoint({ id: 42 })).resolves.toBeUndefined();
+  });
+
   test('it should allow payloads for dynamic options. but not pass them into GET requests', async () => {
     nock('http://test').get('/param', '').reply(200, { data: 'success' });
 
@@ -36,6 +104,19 @@ describe('endpoints', () => {
 
     const res = await endpoint({ data: 'param' });
     expect(res).toEqual('success');
+  });
+
+  test('it should preserve an explicitly configured falsy payload', async () => {
+    nock('http://test/').post('/', 'false').reply(200, { data: 'success' });
+
+    const endpoint = sdk.createEndpoint<{ ignored: boolean }, string>({
+      client,
+      endpoint: 'http://test/',
+      path: '/',
+      payload: false
+    });
+
+    await expect(endpoint({ ignored: true })).resolves.toEqual('success');
   });
 
   test('it should properly join urls', async () => {

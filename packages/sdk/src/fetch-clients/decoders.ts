@@ -3,7 +3,7 @@ import * as defs from '../definitions';
 import * as codecs from './codecs';
 import * as errors from './errors';
 
-const getResponseCodec = (contentType: string, configuredCodecs?: defs.Codecs) => {
+const getResponseContentCodec = (contentType: string, configuredCodecs?: defs.Codecs) => {
   // extract the first part of Content-Type - i.e "[application/json]; charset-utf8"
   const normalizedContentType = contentType.replace(/(?!<.*);.*/, '');
   return configuredCodecs?.[normalizedContentType] || codecs.DEFAULT_CODECS[normalizedContentType];
@@ -16,13 +16,13 @@ export const decodeResponse = async (
 ) => {
   const content_type = response.headers.get(defs.Header.ContentType) || defs.ContentType.JSON;
 
-  const codec = getResponseCodec(content_type, configuredCodecs);
-  if (!codec) {
+  const contentCodec = getResponseContentCodec(content_type, configuredCodecs);
+  if (!contentCodec) {
     const raw = await response.text();
     throw new errors.UnparsableServiceResponse(`${meta.method} ${meta.url}`, response.status, raw);
   }
 
-  return codec.decode(await response.arrayBuffer());
+  return contentCodec.decode(await response.arrayBuffer());
 };
 
 export const decodeServiceResponse = async (
@@ -30,14 +30,16 @@ export const decodeServiceResponse = async (
   meta: defs.RequestMetadata,
   configuredCodecs?: defs.Codecs
 ) => {
-  const { data, error } = await decodeResponse(response, meta, configuredCodecs);
+  const decoded = await decodeResponse(response, meta, configuredCodecs);
 
-  if (data) {
-    return data;
-  }
+  if (decoded !== null && typeof decoded === 'object') {
+    if ('data' in decoded) {
+      return decoded.data;
+    }
 
-  if (error) {
-    throw new micro_errors.JourneyError(error);
+    if ('error' in decoded && decoded.error) {
+      throw new micro_errors.JourneyError(decoded.error);
+    }
   }
 
   /**
@@ -53,7 +55,7 @@ export const decodeServiceResponse = async (
   return null;
 };
 
-// Just a util function because I didn't like the inline arrow function with the ternary, but we can use it if preferred.
+/** Build a response decoder that uses the client's configured content codecs. */
 export const buildServiceResponseDecoder = (configuredCodecs?: defs.Codecs) => {
   return (response: defs.TResponse, meta: defs.RequestMetadata) =>
     decodeServiceResponse(response, meta, configuredCodecs);

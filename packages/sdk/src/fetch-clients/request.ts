@@ -1,6 +1,5 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as defs from '../definitions';
-import { Codec } from '../definitions';
 import * as streaming from '../streaming';
 import * as codecs from './codecs';
 import * as decoders from './decoders';
@@ -21,6 +20,48 @@ export type CoreRequestParams<R extends defs.TResponse> = defs.RequestParams<R, 
 
 const defaultRetryStrategy: defs.RetryStrategy = (attempt) => {
   return attempt * 200;
+};
+
+const getRequestContentCodec = (contentType: string, configuredCodecs?: defs.Codecs) => {
+  return configuredCodecs?.[contentType] || codecs.DEFAULT_CODECS[contentType];
+};
+
+/**
+ * Convert a decoded request value into the representation expected by the
+ * transport, then serialize that representation for the wire.
+ *
+ * A request-specific encoder remains a complete override of this lifecycle.
+ */
+const encodeRequestBody = <R extends defs.TResponse>(value: any, contentType: string, params: CoreRequestParams<R>) => {
+  if (params.encoder) {
+    return params.encoder(value);
+  }
+
+  const encodedRepresentation = params.transcoding?.encode ? params.transcoding.encode(value) : value;
+  const contentCodec = getRequestContentCodec(contentType, params.codecs);
+
+  if (contentCodec) {
+    return contentCodec.encode(encodedRepresentation);
+  }
+
+  if (!Buffer.isBuffer(encodedRepresentation) && typeof encodedRepresentation !== 'string') {
+    throw new Error(
+      `Unsupported body with type ${typeof encodedRepresentation} and a Content-Type of ${contentType}. None of the configured codecs know how to convert the given body to a Buffer or string. Please provide a compatible codec`
+    );
+  }
+
+  return encodedRepresentation;
+};
+
+/** Decode the service envelope, then convert its encoded representation to a domain value. */
+const decodeResponseBody = async <R extends defs.TResponse>(
+  response: R,
+  metadata: defs.RequestMetadata,
+  decoder: defs.ResponseDecoder<R>,
+  transcoding?: defs.Transcoding
+) => {
+  const encodedRepresentation = await decoder(response, metadata);
+  return transcoding?.decode ? transcoding.decode(encodedRepresentation) : encodedRepresentation;
 };
 
 const createTimeout = (handler: () => void, timeout: number) => {
@@ -69,30 +110,13 @@ export const request = async <R extends defs.TResponse>(
   }
 
   let body;
-  if (params.body) {
+  if (params.body !== undefined && params.body !== null) {
     if (streaming.isStreamedPayload(params.body)) {
       body = params.body.encode();
     } else {
       const content_type = headers[defs.Header.ContentType] || defs.ContentType.JSON;
       headers[defs.Header.ContentType] = content_type;
-
-      if (params.encoder) {
-        body = params.encoder(params.body);
-      } else if (params.codecs?.[content_type]) {
-        const codec: Codec = params.codecs?.[content_type];
-        body = codec.encode(params.body);
-      } else if (codecs.DEFAULT_CODECS[content_type]) {
-        const codec: Codec = codecs.DEFAULT_CODECS[content_type];
-        body = codec.encode(params.body);
-      } else {
-        if (!Buffer.isBuffer(params.body) && typeof params.body !== 'string') {
-          throw new Error(
-            `Unsupported body with type ${typeof params.body} and a Content-Type of ${content_type}. None of the configured codecs know how to convert the given body to a Buffer or string. Please provide a compatible codec`
-          );
-        }
-
-        body = params.body;
-      }
+      body = encodeRequestBody(params.body, content_type, params);
     }
   }
 
@@ -164,7 +188,9 @@ export const request = async <R extends defs.TResponse>(
           })
         );
       },
-      decode: () => decoder(res, request_metadata)
+      decode: async () => {
+        return decodeResponseBody(res, request_metadata, decoder, params.transcoding);
+      }
     };
   } catch (err) {
     request_timeout?.clear();

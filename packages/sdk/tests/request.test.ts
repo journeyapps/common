@@ -43,6 +43,14 @@ describe('network requests', () => {
       .reply(200, {
         data: success_data
       })
+      .get('/false')
+      .reply(200, { data: false })
+      .get('/zero')
+      .reply(200, { data: 0 })
+      .get('/empty')
+      .reply(200, { data: '' })
+      .get('/null')
+      .reply(200, { data: null })
       .get('/failure')
       .reply(401, {
         error: error_data
@@ -52,6 +60,16 @@ describe('network requests', () => {
       method: 'get'
     });
     expect(await success.decode()).toEqual(success_data);
+
+    for (const [path, expected] of [
+      ['false', false],
+      ['zero', 0],
+      ['empty', ''],
+      ['null', null]
+    ] as const) {
+      const response = await client.request(`http://test/${path}`, { method: 'get' });
+      await expect(response.decode()).resolves.toEqual(expected);
+    }
 
     const failure = await client.request('http://test/failure', {
       method: 'get'
@@ -133,6 +151,21 @@ describe('network requests', () => {
     });
 
     await expect(await res.decode()).toEqual(true);
+  });
+
+  test.each([
+    ['false', false, 'false'],
+    ['zero', 0, '0'],
+    ['empty string', '', '""']
+  ])('it should encode a %s request body', async (_, requestBody, encodedBody) => {
+    nock('http://test/').post('/', encodedBody).reply(200, { data: true });
+
+    const response = await client.request('http://test/', {
+      method: 'post',
+      body: requestBody
+    });
+
+    await expect(response.decode()).resolves.toBe(true);
   });
 
   test('it should use custom decoder configured on the client', async () => {
