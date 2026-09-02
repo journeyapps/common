@@ -1,5 +1,11 @@
 # @journeyapps/common-sdk
 
+## 1.1.0
+
+### Minor Changes
+
+- 4528bb2: Add a codec-required SDK client and injectable transcoders so HTTP transports can encode and decode service-boundary representations while in-process transports pass decoded values directly.
+
 ## 1.0.9
 
 ### Patch Changes
