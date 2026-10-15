@@ -6,7 +6,7 @@ export interface BaseObserverInterface<T> {
 export class BaseObserver<T> implements BaseObserverInterface<T> {
   private static counter = 0;
 
-  protected listeners: Map<string, Partial<T>>;
+  private readonly listeners: Map<string, Partial<T>>;
 
   constructor() {
     this.listeners = new Map();
@@ -26,6 +26,13 @@ export class BaseObserver<T> implements BaseObserverInterface<T> {
     return () => {
       this.listeners.delete(id);
     };
+  }
+
+  /**
+   * Remove all current listener registrations.
+   */
+  clearListeners(): void {
+    this.listeners.clear();
   }
 
   iterateListeners(cb: (listener: Partial<T>) => any) {

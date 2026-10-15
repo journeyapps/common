@@ -1,0 +1,35 @@
+{
+  "name": "@journeyapps/common-xml",
+  "version": "5.0.4",
+  "description": "Shared XML parsing, serialization and incremental updates",
+  "main": "./dist/node.js",
+  "browser": "./dist/index.js",
+  "typings": "./dist/@types/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc -b --clean && rm -rf ./dist",
+    "test": "pnpm build && pnpm test:node && pnpm test:browser",
+    "test:browser": "vitest --run --config vitest.config.browser.ts ",
+    "test:node": "vitest --run --config vitest.config.unit.ts"
+  },
+  "files": [
+    "dist",
+    "domparser.js"
+  ],
+  "dependencies": {
+    "@journeyapps/domparser": "^0.4.1",
+    "xmldom": "^0.6.0"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "stream-browserify": "^3.0.0",
+    "vitest": "^5.0.0",
+    "@types/node": "^26.1.2",
+    "@vitest/browser-webdriverio": "^5.0.0",
+    "webdriverio": "^9.32.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
