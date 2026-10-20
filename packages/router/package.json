@@ -1,0 +1,31 @@
+{
+  "name": "@journeyapps/common-router",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/journeyapps/common.git"
+  },
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/@types/index.d.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "@journeyapps/common-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "vitest": "^5.0.0",
+    "@types/node": "^26.1.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "Apache-2.0"
+}

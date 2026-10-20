@@ -21,6 +21,12 @@
     },
     {
       "path": "./packages/xml"
+    },
+    {
+      "path": "./packages/codec"
+    },
+    {
+      "path": "./packages/router"
     }
   ]
 }
