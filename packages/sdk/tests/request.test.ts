@@ -1,8 +1,8 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as micro_errors from '@journeyapps/micro-errors';
 import * as stream from 'stream';
+import { setTimeout as delay } from 'node:timers/promises';
 import * as sdk from '../src';
-// @ts-ignore
 import nock from 'nock';
 import { describe, test, expect } from 'vitest';
 
@@ -14,8 +14,8 @@ describe('network requests', () => {
 
     nock('http://test/')
       .post('/', Buffer.concat(data))
-      .reply(200, (_, requestBody) => {
-        return requestBody;
+      .reply(200, (request: Request) => {
+        return request.text();
       });
 
     const res = await client.request('http://test/', {
@@ -217,17 +217,17 @@ describe('network requests', () => {
     nock('http://test1/')
       .get('/')
       .reply(200, response, {
-        test1: (req) => (req.getHeader('test1') as any).toString()
+        test1: (req) => req.headers.get('test1')!
       });
     nock('http://test2/')
       .get('/')
       .reply(200, response, {
-        test2: (req) => (req.getHeader('test2') as any).toString()
+        test2: (req) => req.headers.get('test2')!
       });
     nock('http://test3/')
       .get('/')
       .reply(200, response, {
-        test3: (req) => (req.getHeader('test3') as any).toString()
+        test3: (req) => req.headers.get('test3')!
       });
 
     const headerFunction = await sdk.constructHeaders([
@@ -324,7 +324,12 @@ describe('network requests', () => {
   });
 
   test('it should timeout', async () => {
-    nock('http://test/').get('/').delay(2000).reply(200, 'success');
+    nock('http://test/')
+      .get('/')
+      .reply(200, async () => {
+        await delay(2000);
+        return 'success';
+      });
 
     const res = client.request('http://test/', {
       method: 'get',
@@ -336,7 +341,12 @@ describe('network requests', () => {
   });
 
   test('it should not timeout when set to 0', async () => {
-    nock('http://test/').get('/').delay(2000).reply(200, 'success');
+    nock('http://test/')
+      .get('/')
+      .reply(200, async () => {
+        await delay(2000);
+        return 'success';
+      });
 
     const res = await client.request('http://test/', {
       decoder: () => 'data',
