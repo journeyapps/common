@@ -1,6 +1,11 @@
 {
   "name": "@journeyapps/common-xml",
   "version": "5.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/journeyapps/common.git",
+    "directory": "packages/xml"
+  },
   "description": "Shared XML parsing, serialization and incremental updates",
   "main": "./dist/node.js",
   "browser": "./dist/index.js",

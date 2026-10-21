@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/journeyapps/common.git"
+    "url": "https://github.com/journeyapps/common.git",
+    "directory": "packages/router"
   },
   "private": false,
   "main": "dist/index.js",
