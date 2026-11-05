@@ -2,7 +2,10 @@ packages:
   - 'packages/*'
 allowBuilds:
   core-js: false
+  edgedriver: false
   esbuild: false
+  geckodriver: false
 minimumReleaseAgeExclude:
   - '@journeyapps/*'
   - '@types/node@26.1.2'
+  - '@types/lodash@4.17.27'
