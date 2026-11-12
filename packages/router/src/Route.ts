@@ -1,7 +1,7 @@
 import { BaseObserver } from '@journeyapps/common-utils';
-import { ParseTemplateResult, parseTemplate, parseURL } from './utils';
-import * as path from 'path';
-import * as _ from 'lodash';
+import { ParseTemplateResult, parseTemplate, parseURL } from './utils.js';
+import _ from 'lodash';
+import { join } from 'pathe';
 
 export interface RouteMountedEvent<P extends Record<string, string> = Record<string, string>> {
   params: P;
@@ -94,7 +94,7 @@ export class Route<P extends Record<string, string> = Record<string, string>> ex
     if (template.endsWith('/*')) {
       template = template.substring(0, template.length - 2);
     }
-    return path.join(template, this.template);
+    return join(template, this.template);
   }
 
   compile() {

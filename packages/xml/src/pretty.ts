@@ -1,6 +1,6 @@
-import { DOCUMENT_NODE, PROCESSING_INSTRUCTION_NODE, XMLNode, XMLDocument } from '@journeyapps/domparser/types';
-import { isElement, isText } from './utils';
-import { serializer } from './serialize';
+import { DOCUMENT_NODE, PROCESSING_INSTRUCTION_NODE, XMLNode, XMLDocument } from '@journeyapps/domparser/types.js';
+import { isElement, isText } from './utils.js';
+import { serializer } from './serialize.js';
 
 export interface PrettyOptions {
   /**

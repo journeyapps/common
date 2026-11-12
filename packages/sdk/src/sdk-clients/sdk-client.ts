@@ -1,6 +1,6 @@
-import { StreamPayload } from '../streaming';
-import * as endpoints from './endpoints';
-import * as defs from '../definitions';
+import { StreamPayload } from '../streaming.js';
+import * as endpoints from './endpoints.js';
+import * as defs from '../definitions.js';
 
 export class CoreSDKClient<C extends defs.NetworkClient> {
   constructor(

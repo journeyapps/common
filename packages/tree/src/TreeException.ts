@@ -1,4 +1,4 @@
-import { TreeEntity } from './TreeEntity';
+import { TreeEntity } from './TreeEntity.js';
 
 export class TreeException extends Error {
   constructor(

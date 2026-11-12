@@ -1,7 +1,7 @@
 import * as micro_errors from '@journeyapps/micro-errors';
-import * as defs from '../definitions';
-import * as codecs from './codecs';
-import * as errors from './errors';
+import * as defs from '../definitions.js';
+import * as codecs from './codecs.js';
+import * as errors from './errors.js';
 
 const getResponseContentCodec = (contentType: string, configuredCodecs?: defs.Codecs) => {
   // extract the first part of Content-Type - i.e "[application/json]; charset-utf8"

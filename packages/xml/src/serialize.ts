@@ -8,9 +8,9 @@ import {
   XMLElement,
   XMLNode,
   XMLSerializer
-} from '@journeyapps/domparser/types';
-import { isAttribute, isCdataNode, isCommentNode, isElement, isText } from './utils';
-import { XMLNodeLike } from '@journeyapps/domparser/lib/XMLNode';
+} from '@journeyapps/domparser/types.js';
+import { isAttribute, isCdataNode, isCommentNode, isElement, isText } from './utils.js';
+import { XMLNodeLike } from '@journeyapps/domparser/lib/XMLNode.js';
 
 // Rough adaption from https://github.com/backslash47/xmldom/blob/8bfe4a6bc184300f0ef68a42ddf8c7219ad55882/src/serializer/serialize.ts
 // MIT Licensed

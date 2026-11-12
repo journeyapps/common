@@ -1,6 +1,6 @@
-import * as xml from '../src';
-import { XMLPositional, parse } from '../src';
-import { XMLElement } from '@journeyapps/domparser/types';
+import * as xml from '../src/index.js';
+import { XMLPositional, parse } from '../src/index.js';
+import { XMLElement } from '@journeyapps/domparser/types.js';
 import { describe, it, expect, beforeEach } from 'vitest';
 
 declare module 'vitest' {

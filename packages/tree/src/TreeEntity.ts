@@ -1,5 +1,5 @@
 import { BaseObserver } from '@journeyapps/common-utils';
-import { TreeNode } from './TreeNode';
+import { TreeNode } from './TreeNode.js';
 
 export enum PathEntryType {
   CHILD = 'child',

@@ -1,4 +1,4 @@
-import { HeaderCollector, Headers } from './definitions';
+import { HeaderCollector, Headers } from './definitions.js';
 
 export const constructHeaders = (collectors: (HeaderCollector | Headers | undefined)[]): (() => Promise<Headers>) => {
   return async () => {

@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest';
-import { Route } from '../src/Route';
-import { buildPath, parseTemplate, parseURL } from '../src/utils';
-import { MemoryRouter } from '../src/MemoryRouter';
-import { HashRouter } from '../src/HashRouter';
+import { Route } from '../src/Route.js';
+import { buildPath, parseTemplate, parseURL } from '../src/utils.js';
+import { MemoryRouter } from '../src/MemoryRouter.js';
+import { HashRouter } from '../src/HashRouter.js';
 
 test('template parsing', () => {
   expect(() => {
@@ -152,6 +152,19 @@ test('Route construction', () => {
       parameter: false
     }
   ]);
+});
+
+test.each([
+  ['/users/', '/cars/', '/users/cars/'],
+  ['/users/*', './cars', '/users/cars'],
+  ['/users/list', '../cars', '/users/cars'],
+  ['/users', '../../cars', '/cars'],
+  ['users', '../../cars', '../cars']
+])('joins parent %s and child %s as %s', (parent, child, expected) => {
+  const route = new Route(parent);
+  const nested = new Route(child);
+  route.addChild(nested);
+  expect(nested.getTemplate()).toBe(expected);
 });
 
 test('URL Parsing', () => {

@@ -1,4 +1,4 @@
-import { AbstractRouter, NavigateToEvent } from './AbstractRouter';
+import { AbstractRouter, NavigateToEvent } from './AbstractRouter.js';
 import _ from 'lodash';
 
 export interface HashRouterOptions {

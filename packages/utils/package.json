@@ -13,6 +13,14 @@
   "author": "JOURNEYAPPS",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
-  "typings": "./dist/@types/index",
-  "dependencies": {}
+  "typings": "./dist/@types/index.d.ts",
+  "dependencies": {},
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/@types/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  }
 }

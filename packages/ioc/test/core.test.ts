@@ -1,5 +1,5 @@
 import { afterEach, expect, it } from 'vitest';
-import { Container, createDecorator } from '../src/Container';
+import { Container, createDecorator } from '../src/Container.js';
 
 class StoreB {
   name: string;

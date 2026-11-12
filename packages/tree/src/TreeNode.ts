@@ -1,5 +1,5 @@
-import { FlattenOptions, Path, PathEntry, PathEntryType, TreeEntity, TreeEntityListener } from './TreeEntity';
-import { TreeException } from './TreeException';
+import { FlattenOptions, Path, PathEntry, PathEntryType, TreeEntity, TreeEntityListener } from './TreeEntity.js';
+import { TreeException } from './TreeException.js';
 
 /**
  * @deprecated

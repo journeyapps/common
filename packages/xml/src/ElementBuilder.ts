@@ -1,4 +1,4 @@
-import { XMLElement } from '@journeyapps/domparser/types';
+import { XMLElement } from '@journeyapps/domparser/types.js';
 
 export interface ElementBuilder {
   /**

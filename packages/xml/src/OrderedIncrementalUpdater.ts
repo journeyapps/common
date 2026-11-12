@@ -1,6 +1,6 @@
-import { XMLElement, XMLNode } from '@journeyapps/domparser/types';
-import { isElement, isText } from './index';
-import { ElementBuilder } from './ElementBuilder';
+import { XMLElement, XMLNode } from '@journeyapps/domparser/types.js';
+import { isElement, isText } from './index.js';
+import { ElementBuilder } from './ElementBuilder.js';
 
 /**
  * XML diff builder where parsed data is considered ordered, and this order must be preserved.

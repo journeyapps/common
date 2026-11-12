@@ -1,9 +1,9 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
-import * as defs from '../definitions';
-import * as streaming from '../streaming';
-import * as codecs from './codecs';
-import * as decoders from './decoders';
-import * as errors from './errors';
+import * as defs from '../definitions.js';
+import * as streaming from '../streaming.js';
+import * as codecs from './codecs.js';
+import * as decoders from './decoders.js';
+import * as errors from './errors.js';
 
 export type FetchParams = {
   method: string;
@@ -44,7 +44,7 @@ const encodeRequestBody = <R extends defs.TResponse>(value: any, contentType: st
     return contentCodec.encode(encodedRepresentation);
   }
 
-  if (!Buffer.isBuffer(encodedRepresentation) && typeof encodedRepresentation !== 'string') {
+  if (!(encodedRepresentation instanceof Uint8Array) && typeof encodedRepresentation !== 'string') {
     throw new Error(
       `Unsupported body with type ${typeof encodedRepresentation} and a Content-Type of ${contentType}. None of the configured codecs know how to convert the given body to a Buffer or string. Please provide a compatible codec`
     );

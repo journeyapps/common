@@ -1,10 +1,10 @@
-import { XMLSerializer } from '@journeyapps/domparser';
-import { DOMImplementation, XMLDocument, XMLDOMParser, XMLElement, XMLPosition } from '@journeyapps/domparser/types';
-import { AttributeNode, isAttribute, isElement, TEXT_NODE } from './utils';
+import type { XMLSerializer as ConfiguredXMLSerializer } from '@journeyapps/domparser';
+import { DOMImplementation, XMLDocument, XMLDOMParser, XMLElement, XMLPosition } from '@journeyapps/domparser/types.js';
+import { AttributeNode, isAttribute, isElement, TEXT_NODE } from './utils.js';
 
 export interface ConfiguredParser {
   parser: XMLDOMParser;
-  serializer: XMLSerializer;
+  serializer: ConfiguredXMLSerializer;
   implementation: DOMImplementation;
 }
 

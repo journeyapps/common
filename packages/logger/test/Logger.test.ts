@@ -8,7 +8,7 @@ import {
   Logger,
   LoggerTransport,
   NodeConsoleLoggerTransport
-} from '../src';
+} from '../src/index.js';
 
 class TestTransport extends LoggerTransport {
   entries: { level: LogLevel; name: string; data: unknown[] }[] = [];

@@ -1,6 +1,6 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
 import type * as stream from 'stream/web';
-import * as defs from './definitions';
+import * as defs from './definitions.js';
 
 /**
  * This is for web compatibility. Web based ReadableStreams are not iterable even though we type them as such

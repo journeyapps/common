@@ -1,6 +1,6 @@
-import * as xml from '../src';
-import { OrderedIncrementalUpdater } from '../src';
-import { XMLElement } from '@journeyapps/domparser/types';
+import * as xml from '../src/index.js';
+import { OrderedIncrementalUpdater } from '../src/index.js';
+import { XMLElement } from '@journeyapps/domparser/types.js';
 import { describe, it, expect } from 'vitest';
 
 describe('OrderedIncrementalUpdater', function () {

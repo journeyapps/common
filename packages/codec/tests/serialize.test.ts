@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import * as t from 'ts-codec';
-import { deserializeCodec, fn, promise, serializeCodec } from '../src';
+import { deserializeCodec, fn, promise, serializeCodec } from '../src/index.js';
 
 describe('codec serialization', () => {
   it('round-trips object codecs with optional properties', () => {

@@ -1,4 +1,4 @@
-import { TreeNode } from '../../src';
+import { TreeNode } from '../../src/index.js';
 import { describe, expect, it } from 'vitest';
 
 describe('Tree', () => {

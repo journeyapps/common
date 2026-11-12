@@ -1,6 +1,6 @@
-import { XMLElement, XMLNode } from '@journeyapps/domparser/types';
-import { isElement, iter } from './index';
-import { ElementBuilder } from './ElementBuilder';
+import { XMLElement, XMLNode } from '@journeyapps/domparser/types.js';
+import { isElement, iter } from './index.js';
+import { ElementBuilder } from './ElementBuilder.js';
 
 /**
  * XML diff builder where the data is considered unordered, and source order is preserved.

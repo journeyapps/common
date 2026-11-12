@@ -1,5 +1,5 @@
-import { LoggerTransport } from './LoggerTransport';
-import { ConsoleLoggerTransport } from './transports/ConsoleLoggerTransport';
+import { LoggerTransport } from './LoggerTransport.js';
+import { ConsoleLoggerTransport } from './transports/ConsoleLoggerTransport.js';
 
 export enum LogLevel {
   OFF = 'OFF',

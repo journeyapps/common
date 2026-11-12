@@ -1,7 +1,7 @@
-import * as defs from '../definitions';
-import { StreamPayload } from '../streaming';
-import * as endpoints from './endpoints';
-import { CoreSDKClient, PartialEndpoint, SDKClientOptions } from './sdk-client';
+import * as defs from '../definitions.js';
+import { StreamPayload } from '../streaming.js';
+import * as endpoints from './endpoints.js';
+import { CoreSDKClient, PartialEndpoint, SDKClientOptions } from './sdk-client.js';
 import * as t from 'ts-codec';
 
 /** Extract the decoded domain value accepted or returned by a transcoding codec. */

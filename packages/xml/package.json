@@ -12,7 +12,7 @@
   "typings": "./dist/@types/index.d.ts",
   "scripts": {
     "build": "tsc --build",
-    "clean": "tsc -b --clean && rm -rf ./dist",
+    "clean": "tsc --build --clean",
     "test": "pnpm build && pnpm test:node && pnpm test:browser",
     "test:browser": "vitest --run --config vitest.config.browser.ts ",
     "test:node": "vitest --run --config vitest.config.unit.ts"
@@ -36,5 +36,31 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/@types/index.d.ts",
+      "browser": "./dist/index.js",
+      "node": "./dist/node.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./domparser": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./domparser.js": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./dist/domparser": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./dist/domparser.js": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    }
   }
 }

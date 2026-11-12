@@ -1,8 +1,8 @@
 import * as t from 'ts-codec';
 import { AnyCodec } from 'ts-codec';
 import { date } from '@journeyapps/micro-codecs';
-import { fn, promise, FunctionCodecArgument } from './function-codec';
-import { externalType } from './external-codec';
+import { fn, promise, FunctionCodecArgument } from './function-codec.js';
+import { externalType } from './external-codec.js';
 
 export type SerializedCodec =
   | {

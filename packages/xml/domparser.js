@@ -1,1 +1,1 @@
-require('./dist/domparser');
+import './dist/domparser.js';

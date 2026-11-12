@@ -1,5 +1,5 @@
-import { prettyText } from '../src';
-import * as xml from '../src';
+import { prettyText } from '../src/index.js';
+import * as xml from '../src/index.js';
 import { describe, it, expect } from 'vitest';
 
 const SAMPLE_DOC = `<?xml version="1.0" encoding="UTF-8"?>

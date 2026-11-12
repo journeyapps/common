@@ -1,9 +1,9 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
-import { StreamPayload } from '../streaming';
+import { StreamPayload } from '../streaming.js';
 import type * as stream from 'stream/web';
-import * as defs from '../definitions';
-import { METHOD } from '../definitions';
-import * as utils from '../utils';
+import * as defs from '../definitions.js';
+import { METHOD } from '../definitions.js';
+import * as utils from '../utils.js';
 
 export type CreateEndpointOptions<C extends defs.NetworkClient> = defs.CommonRequestParams & {
   client: C;

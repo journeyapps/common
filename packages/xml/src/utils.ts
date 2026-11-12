@@ -5,7 +5,7 @@ import {
   XMLCharacterNode,
   CDATA_SECTION_NODE,
   COMMENT_NODE
-} from '@journeyapps/domparser/types';
+} from '@journeyapps/domparser/types.js';
 
 // From: http://www.w3.org/TR/2000/REC-DOM-Level-2-Core-20001113/core.html#ID-1950641247
 // These constants are also defined one Node, but it's better to not

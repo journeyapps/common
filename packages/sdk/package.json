@@ -12,8 +12,8 @@
   },
   "author": "JOURNEYAPPS",
   "license": "Apache-2.0",
-  "main": "./dist/index",
-  "browser": "./dist/web",
+  "main": "./dist/index.js",
+  "browser": "./dist/web.js",
   "types": "./dist/@types/index.d.ts",
   "exports": {
     ".": {
@@ -25,6 +25,15 @@
         "types": "./dist/@types/index.d.ts",
         "default": "./dist/index.js"
       }
+    },
+    "./package.json": "./package.json",
+    "./web": {
+      "types": "./dist/@types/web.d.ts",
+      "default": "./dist/web.js"
+    },
+    "./web.js": {
+      "types": "./dist/@types/web.d.ts",
+      "default": "./dist/web.js"
     }
   },
   "scripts": {
@@ -43,5 +52,6 @@
     "vitest": "^5.0.5",
     "@types/lodash": "^4.17.27",
     "nock": "^15.0.5"
-  }
+  },
+  "type": "module"
 }

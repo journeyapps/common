@@ -2,7 +2,7 @@ import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as micro_errors from '@journeyapps/micro-errors';
 import * as stream from 'stream';
 import { setTimeout as delay } from 'node:timers/promises';
-import * as sdk from '../src';
+import * as sdk from '../src/index.js';
 import nock from 'nock';
 import { describe, test, expect } from 'vitest';
 

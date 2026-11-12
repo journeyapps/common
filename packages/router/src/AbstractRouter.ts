@@ -1,5 +1,5 @@
-import { NavigateOptions, Route } from './Route';
-import { buildPath } from './utils';
+import { NavigateOptions, Route } from './Route.js';
+import { buildPath } from './utils.js';
 
 export interface NavigateToEvent {
   route: Route;

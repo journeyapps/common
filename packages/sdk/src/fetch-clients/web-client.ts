@@ -1,10 +1,10 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
-import * as defs from '../definitions';
-import { RequestParams } from '../definitions';
-import * as streaming from '../streaming';
-import * as utils from '../utils';
-import * as requester from './request';
-import { FetchParams } from './request';
+import * as defs from '../definitions.js';
+import { RequestParams } from '../definitions.js';
+import * as streaming from '../streaming.js';
+import * as utils from '../utils.js';
+import * as requester from './request.js';
+import { FetchParams } from './request.js';
 
 export type WebRequestInput = ReadableStream | any;
 export type WebNetworkResponse = defs.NetworkResponse<Response>;
@@ -43,10 +43,17 @@ export const createWebNetworkClient = (options?: WebNetworkClientOptions): WebNe
     request: async (url: string, params: RequestParams<Response, any>) => {
       let headers = {};
       let body;
-      if (params.body) {
+      if (params.body !== undefined && params.body !== null) {
         if (streaming.isStreamedPayload(params.body)) {
           if (options?.buffer_streams ?? true) {
-            body = Buffer.concat(await micro_streaming.drain(streaming.ensureIterable(params.body.encode())));
+            const chunks = await micro_streaming.drain(streaming.ensureIterable(params.body.encode()));
+            const bytes = new Uint8Array(chunks.reduce((size, chunk) => size + chunk.byteLength, 0));
+            let offset = 0;
+            for (const chunk of chunks) {
+              bytes.set(chunk, offset);
+              offset += chunk.byteLength;
+            }
+            body = bytes;
           } else {
             body = new streaming.RawStream(micro_streaming.readableFrom(params.body.encode()));
           }
