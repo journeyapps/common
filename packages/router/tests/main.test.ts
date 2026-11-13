@@ -7,7 +7,7 @@ import { HashRouter } from '../src/HashRouter.js';
 test('template parsing', () => {
   expect(() => {
     parseTemplate('');
-  }).toThrowError('template cant be empty');
+  }).toThrowError("template can't be empty");
 
   expect(parseTemplate('/').parts).toEqual([]);
 
