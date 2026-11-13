@@ -48,7 +48,7 @@ export const parseTemplate = _.memoize((url: string): ParseTemplateResult => {
   let normalized = url.trim();
 
   if (normalized === '') {
-    throw new Error('template cant be empty');
+    throw new Error('template can't be empty');
   }
 
   // remove first slash
