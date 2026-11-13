@@ -1,5 +1,12 @@
 # @journeyapps/common-tree
 
+## 3.0.3
+
+### Patch Changes
+
+- Updated dependencies [780e391]
+  - @journeyapps/common-utils@2.0.0
+
 ## 3.0.2
 
 ### Patch Changes

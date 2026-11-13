@@ -1,5 +1,11 @@
 # @journeyapps/common-utils
 
+## 2.0.0
+
+### Major Changes
+
+- 780e391: Make listener storage private. Use clearListeners for cleanup. Deferred digest notifications are owned by DigestWatch.
+
 ## 1.0.3
 
 ### Patch Changes

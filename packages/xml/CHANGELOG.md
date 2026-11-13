@@ -1,5 +1,11 @@
 # @journeyapps/core-xml
 
+## 6.0.0
+
+### Major Changes
+
+- 780e391: Move the XML parsing, serialization and incremental-update library from journey-lib into the common workspace as `@journeyapps/common-xml`. Preserve the browser and Node entry points and compile against the common workspace configuration.
+
 ## 5.0.4
 
 ### Patch Changes

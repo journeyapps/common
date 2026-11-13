@@ -1,5 +1,16 @@
 # @journeyapps-platform/rl-router
 
+## 0.1.0
+
+### Minor Changes
+
+- 90854fd: Move reusable codec definitions and routing from the runtime engine into common.
+
+### Patch Changes
+
+- Updated dependencies [780e391]
+  - @journeyapps/common-utils@2.0.0
+
 ## 1.1.2
 
 ### Patch Changes
