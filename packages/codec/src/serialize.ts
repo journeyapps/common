@@ -4,63 +4,52 @@ import { date } from '@journeyapps/micro-codecs';
 import { fn, promise, FunctionCodecArgument } from './function-codec.js';
 import { externalType } from './external-codec.js';
 
-export type SerializedCodec =
-  | {
-      type: 'string' | 'number' | 'boolean' | 'any' | 'null' | 'date';
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'literal';
-      value: string | number | boolean | null;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'enum';
-      values: Record<string, string>;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'object';
-      shape: Record<string, SerializedCodec>;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'record' | 'array';
-      value: SerializedCodec;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'tuple' | 'union' | 'intersection';
-      codecs: SerializedCodec[];
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'function';
-      args: Array<{ name: string; codec: SerializedCodec }>;
-      rest?: { name: string; codec: SerializedCodec };
-      returns: SerializedCodec;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'promise';
-      value: SerializedCodec;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    }
-  | {
-      type: 'external';
-      reference: string;
-      declaration?: string;
-      required?: boolean;
-      metadata?: Record<string, any>;
-    };
+type SerializedCodecOptions = {
+  required?: boolean;
+  metadata?: Record<string, any>;
+};
+
+export type SerializedCodec = SerializedCodecOptions &
+  (
+    | {
+        type: 'string' | 'number' | 'boolean' | 'any' | 'null' | 'date';
+      }
+    | {
+        type: 'literal';
+        value: string | number | boolean | null;
+      }
+    | {
+        type: 'enum';
+        values: Record<string, string>;
+      }
+    | {
+        type: 'object';
+        shape: Record<string, SerializedCodec>;
+      }
+    | {
+        type: 'record' | 'array';
+        value: SerializedCodec;
+      }
+    | {
+        type: 'tuple' | 'union' | 'intersection';
+        codecs: SerializedCodec[];
+      }
+    | {
+        type: 'function';
+        args: Array<{ name: string; codec: SerializedCodec }>;
+        rest?: { name: string; codec: SerializedCodec };
+        returns: SerializedCodec;
+      }
+    | {
+        type: 'promise';
+        value: SerializedCodec;
+      }
+    | {
+        type: 'external';
+        reference: string;
+        declaration?: string;
+      }
+  );
 
 export function serializeCodec(codec: AnyCodec): SerializedCodec {
   const serialized = serializeRequiredCodec(codec);
