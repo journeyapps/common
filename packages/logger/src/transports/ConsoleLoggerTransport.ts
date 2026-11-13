@@ -1,6 +1,6 @@
-import { isLogToken, LogColor, LogStyle, LogToken } from '../Log';
-import { LoggerTransport } from '../LoggerTransport';
-import { LogLevel } from '../Logger';
+import { isLogToken, LogColor, LogStyle, LogToken } from '../Log.js';
+import { LoggerTransport } from '../LoggerTransport.js';
+import { LogLevel } from '../Logger.js';
 
 const COLORS: Record<LogColor, string> = {
   [LogColor.RED]: '#e05252',

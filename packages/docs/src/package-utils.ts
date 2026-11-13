@@ -1,5 +1,8 @@
 import { TypeDocOptionMap } from 'typedoc';
-import * as path from 'path';
+import * as path from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
 import { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 import { PluginOptions } from '@docusaurus/types';
 

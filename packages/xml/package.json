@@ -1,0 +1,66 @@
+{
+  "name": "@journeyapps/common-xml",
+  "version": "5.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/journeyapps/common.git",
+    "directory": "packages/xml"
+  },
+  "description": "Shared XML parsing, serialization and incremental updates",
+  "main": "./dist/node.js",
+  "browser": "./dist/index.js",
+  "typings": "./dist/@types/index.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "pnpm build && pnpm test:node && pnpm test:browser",
+    "test:browser": "vitest --run --config vitest.config.browser.ts ",
+    "test:node": "vitest --run --config vitest.config.unit.ts"
+  },
+  "files": [
+    "dist",
+    "domparser.js"
+  ],
+  "dependencies": {
+    "@journeyapps/domparser": "^0.4.1",
+    "xmldom": "^0.6.0"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.3",
+    "stream-browserify": "^3.0.0",
+    "vitest": "^5.0.5",
+    "@types/node": "^26.6.5",
+    "@vitest/browser-webdriverio": "^5.0.0",
+    "webdriverio": "^10.1.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/@types/index.d.ts",
+      "browser": "./dist/index.js",
+      "node": "./dist/node.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json",
+    "./domparser": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./domparser.js": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./dist/domparser": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    },
+    "./dist/domparser.js": {
+      "types": "./dist/@types/domparser.d.ts",
+      "default": "./dist/domparser.js"
+    }
+  }
+}

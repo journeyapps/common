@@ -1,32 +1,15 @@
 name: Setup Node and pnpm
-description: Setup Node, pnpm, pnpm cache, and install dependencies.
+description: Setup Node, pnpm, cache dependencies, and install.
 
 runs:
   using: composite
   steps:
-    - name: Setup NodeJS
-      uses: actions/setup-node@v6
+    - uses: actions/setup-node@v6
       with:
         node-version-file: '.nvmrc'
         registry-url: 'https://registry.npmjs.org'
 
-    - uses: pnpm/action-setup@v6
-      name: Install pnpm
+    - uses: pnpm/setup@v1
       with:
-        run_install: false
-
-    - name: Get pnpm store directory
-      shell: bash
-      run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
-
-    - uses: actions/cache@v5
-      name: Setup pnpm cache
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-
-    - name: Install dependencies
-      shell: bash
-      run: pnpm install
+        cache: true
+        cache-dependency-path: '**/pnpm-lock.yaml'

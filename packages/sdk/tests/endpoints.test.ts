@@ -1,7 +1,7 @@
 import * as micro_streaming from '@journeyapps/micro-streaming';
 import * as stream from 'stream';
-import * as sdk from '../src';
-import { METHOD } from '../src';
+import * as sdk from '../src/index.js';
+import { METHOD } from '../src/index.js';
 // @ts-ignore
 import nock from 'nock';
 import { describe, test, it, expect } from 'vitest';

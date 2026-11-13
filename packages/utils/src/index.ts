@@ -1,1 +1,1 @@
-export * from './BaseObserver';
+export * from './BaseObserver.js';

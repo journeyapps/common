@@ -1,6 +1,6 @@
-import { isLogToken, LogColor, LogStyle } from '../Log';
-import { LogLevel } from '../Logger';
-import { LoggerTransport } from '../LoggerTransport';
+import { isLogToken, LogColor, LogStyle } from '../Log.js';
+import { LogLevel } from '../Logger.js';
+import { LoggerTransport } from '../LoggerTransport.js';
 
 const FOREGROUND_COLORS: Record<LogColor, number> = {
   [LogColor.RED]: 31,

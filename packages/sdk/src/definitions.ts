@@ -1,5 +1,5 @@
 import type * as stream from 'stream/web';
-import * as streaming from './streaming';
+import * as streaming from './streaming.js';
 
 export type ResponseDecoder<R extends TResponse = TResponse> = (
   response: R,

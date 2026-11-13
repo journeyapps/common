@@ -1,3 +1,3 @@
-export * from './TreeEntity';
-export * from './TreeNode';
-export * from './TreeException';
+export * from './TreeEntity.js';
+export * from './TreeNode.js';
+export * from './TreeException.js';

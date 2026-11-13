@@ -1,10 +1,10 @@
 import * as consumers from 'stream/consumers';
-import * as streaming from '../streaming';
+import * as streaming from '../streaming.js';
 import HttpAgent from 'agentkeepalive';
-import * as requester from './request';
-import * as defs from '../definitions';
-import * as errors from './errors';
-import * as utils from '../utils';
+import * as requester from './request.js';
+import * as defs from '../definitions.js';
+import * as errors from './errors.js';
+import * as utils from '../utils.js';
 import * as stream from 'stream';
 
 // these imports are written this way so they work with nock

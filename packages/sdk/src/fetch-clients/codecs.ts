@@ -1,4 +1,4 @@
-import * as defs from '../definitions';
+import * as defs from '../definitions.js';
 import * as bson from 'bson';
 
 export const JSONCodec: defs.Codec = {
